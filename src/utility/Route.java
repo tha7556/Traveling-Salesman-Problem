@@ -1,5 +1,7 @@
 package utility;
 
+import java.util.Arrays;
+
 /**
  * A Route containing an Array of Cities in the order that they are traversed
  * @author Tyler Atkinson
@@ -40,11 +42,32 @@ public class Route {
 		return distance;
 	}
 	/**
+	 * Gets the size of the Array of Cities
+	 * @return The size of the city array
+	 */
+	public int size() {
+		return cities.length;
+	}
+	/**
 	 * Calculates the fitness of the root(1/distance)
 	 * @return The Route's fitness
 	 */
 	public double getFitness() {
 		return 1.0/distance;
+	}
+	/**
+	 * Swaps two Cities at given indices
+	 * @param indexA The index of the first City to swap
+	 * @param indexB The index of the second City to swap
+	 */
+	public Route swap(int indexA, int indexB) {
+		Route newRoute = new Route(Arrays.copyOf(cities, cities.length));
+		//System.out.println("swap: "+"\n"+cities[indexB]+"\nand:\n"+cities[indexA]);
+		//System.out.println("before: "+newRoute);
+		newRoute.getCities()[indexA] = cities[indexB];
+		newRoute.getCities()[indexB] = cities[indexA];
+		//System.out.println("after: "+newRoute);
+		return newRoute;
 	}
 	/**
 	 * Returns the Route as a String in the form:<br>A-B-C-D-A</br>
