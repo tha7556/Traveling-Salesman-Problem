@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public abstract class Salesman {
 	protected City[] cities;
-	public static final int MAX_WIDTH = 200 , MAX_HEIGHT = 200;
+	public static final int MAX_WIDTH = 1 , MAX_HEIGHT = 1;
 	protected Window window;
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize
@@ -62,7 +62,7 @@ public abstract class Salesman {
 			scanner = new Scanner(new File(fileName));
 			while(scanner.hasNextLine()) {
 				String[] line = scanner.nextLine().split("\t");
-				City city = new City(line[2].trim(),Integer.parseInt(line[0].trim()),Integer.parseInt(line[1].trim()));
+				City city = new City(line[2].trim(),Double.parseDouble(line[0].trim()),Double.parseDouble(line[1].trim()));
 				cities.add(city);
 			}
 		} catch(Exception e) {

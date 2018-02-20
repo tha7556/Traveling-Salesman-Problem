@@ -4,7 +4,7 @@ package utility;
  * @author Tyler Atkinson
  */
 public class City {
-	public int x,y;
+	public double x,y;
 	String name;
 	/**
 	 * Creates a new City named: name with coordinates (x,y) 
@@ -12,7 +12,7 @@ public class City {
 	 * @param x The x coordinate
 	 * @param y The y coordinate
 	 */
-	public City(String name, int x, int y) {
+	public City(String name, double x, double y) {
 		this.name = name;
 		this.x = x;
 		this.y = y;
@@ -21,14 +21,14 @@ public class City {
 	 * Gets the X value of the City
 	 * @return The X coordinate of the City
 	 */
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 	/**
 	 * Gets the Y value of the City
 	 * @return The Y coordinate of the City
 	 */
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	/**
