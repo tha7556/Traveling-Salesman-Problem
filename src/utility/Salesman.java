@@ -10,10 +10,11 @@ import java.util.Scanner;
  */
 public abstract class Salesman {
 	protected City[] cities;
-	protected Route bestRoute;
-	protected double bestFitness;
+	protected Route bestRoute, worstRoute;
+	protected double bestFitness, worstFitness;
 	public static final int MAX_WIDTH = 1 , MAX_HEIGHT = 1;
 	protected Window window;
+	protected boolean show;
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize if show = true
 	 * @param cities The Array of Cities
@@ -21,10 +22,13 @@ public abstract class Salesman {
 	 */
 	public Salesman(City[] cities, boolean show) {
 		this.cities = cities;
+		this.show = show;
 		if(show)
 			window = new Window(400, 400, cities);
 		bestRoute = new Route(cities);
+		worstRoute = bestRoute;
 		bestFitness = bestRoute.getFitness();
+		worstFitness = bestFitness;
 	}
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize
@@ -52,7 +56,9 @@ public abstract class Salesman {
 	 * @param route The new Route to display
 	 */
 	public void updateRoute(Route route) {
-		window.updateRoute(route.getCities());
+		if(show) {
+			window.updateRoute(route.getCities());
+		}
 	}
 	/**
 	 * Randomly shuffles an Array of cities
