@@ -49,15 +49,16 @@ double Route::getFitness() {
 }
 
 
-void Route::set(int index, City* value) {
-	cities[index] = *value;
+void Route::set(int index, City value) {
+	cities[index] = value;
 }
 
 
 Route Route::swap(int indexA, int indexB) {
+	cout << indexA << indexB << endl;
 	Route newRoute = Route(cities);
-	newRoute.set(indexA, &cities[indexB]);
-	newRoute.set(indexB, &cities[indexA]);
+	newRoute.set(indexA, cities[indexB]);
+	newRoute.set(indexB, cities[indexA]);
 	return newRoute;
 }
 

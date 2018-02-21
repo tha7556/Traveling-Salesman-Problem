@@ -33,7 +33,7 @@ City* Salesman::getFromFile(string fileName) {
 	ifstream file;
 	file.open(fileName);
 	if (!file) {
-		cerr << "Unable to open: " << fileName;
+		cerr << "Unable to open: \"" << fileName << "\"";
 		exit(1);
 	}
 	string line;
@@ -57,11 +57,6 @@ City* Salesman::getFromFile(string fileName) {
 	}
 	return result;
 }
-int main() {
-	City* c = Salesman::getFromFile("TSP test.txt");
-	Salesman man = Salesman(c);
-	cout << "finita!";
-	while (true) {
-		continue;
-	}
-}
+
+
+

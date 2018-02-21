@@ -24,6 +24,9 @@
     <ClInclude Include="Salesman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ExhaustedSalesman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="City.cpp">
@@ -35,5 +38,12 @@
     <ClCompile Include="Salesman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ExhaustedSalesman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TSP.txt" />
+    <Text Include="TSP test.txt" />
   </ItemGroup>
 </Project>

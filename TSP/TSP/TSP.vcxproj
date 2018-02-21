@@ -116,13 +116,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="City.h" />
+    <ClInclude Include="ExhaustedSalesman.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="Salesman.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="City.cpp" />
+    <ClCompile Include="ExhaustedSalesman.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="Salesman.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TSP test.txt" />
+    <Text Include="TSP.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

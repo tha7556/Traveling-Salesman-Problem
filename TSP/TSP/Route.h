@@ -1,5 +1,6 @@
 #pragma once
 #include "City.h"
+#include <iostream>
 //A Route containing an array of Cities in the order that they are traversed
 class Route {
 public:
@@ -23,7 +24,7 @@ public:
 	//Calculates the fitness based on 1/distance
 	double getFitness();
 	//Allows modifications to the Route, setting the City at the index to the new City 
-	void set(int index, City* value);
+	void set(int index, City value);
 	//Gets a new Route in which the two indices are swapped
 	Route swap(int indexA, int indexB);
 	//Creates a string representation of the Route
