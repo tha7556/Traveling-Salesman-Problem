@@ -1,7 +1,7 @@
 #include "Route.h"
 #include <math.h>
 
-Route::Route(City *city){
+Route::Route(City *city) {
 	distance = 0.0;
 	length = sizeof(city) / sizeof(city[0]);
 	cities = new City[length];
@@ -14,8 +14,8 @@ Route::Route(City *city){
 Route::Route() {
 
 }
-Route::~Route() //destructor
-{
+//deconstructor
+Route::~Route() {
 }
 
 
@@ -34,32 +34,27 @@ double Route::getDistance() {
 }
 
 
-City* Route::getCities()
-{
+City* Route::getCities() {
 	return cities;
 }
 
 
-int Route::size()
-{
+int Route::size() {
 	return length;
 }
 
 
-double Route::getFitness()
-{
+double Route::getFitness() {
 	return 1.0 / distance;
 }
 
 
-void Route::set(int index, City* value)
-{
+void Route::set(int index, City* value) {
 	cities[index] = *value;
 }
 
 
-Route Route::swap(int indexA, int indexB)
-{
+Route Route::swap(int indexA, int indexB) {
 	Route newRoute = Route(cities);
 	newRoute.set(indexA, &cities[indexB]);
 	newRoute.set(indexB, &cities[indexA]);
@@ -67,8 +62,7 @@ Route Route::swap(int indexA, int indexB)
 }
 
 
-string Route::toString()
-{
+string Route::toString() {
 	string result = "";
 	for (int i = 0; i < length; i++) {
 		result += cities[i].getName() + "-";

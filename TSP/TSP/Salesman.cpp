@@ -1,17 +1,13 @@
 #include "Salesman.h"
 
-
-
-Salesman::Salesman()
-{
+Salesman::Salesman() {
 	length = 0;
 	bestFitness = 0.0;
 	worstFitness = 0.0;
 }
 
-
-Salesman::~Salesman()
-{
+//Deconstructor
+Salesman::~Salesman() {
 }
 
 
@@ -33,8 +29,7 @@ City* Salesman::getCities() {
 }
 
 
-City* Salesman::getFromFile(string fileName)
-{
+City* Salesman::getFromFile(string fileName) {
 	ifstream file;
 	file.open(fileName);
 	if (!file) {
@@ -46,9 +41,9 @@ City* Salesman::getFromFile(string fileName)
 	vector<City> cList;
 	while (getline(file, line)) {
 		double x = atof(line.substr(0, line.find("\t")).c_str());
-		line = line.substr(line.find("\t")+1);
-		double y = atof(line.substr(0, line.find("\t")+1).c_str());
-		line = line.substr(line.find("\t")+1);
+		line = line.substr(line.find("\t") + 1);
+		double y = atof(line.substr(0, line.find("\t") + 1).c_str());
+		line = line.substr(line.find("\t") + 1);
 		string name = line;
 		cout << name << endl;
 		City city = City(name, x, y);
@@ -60,7 +55,6 @@ City* Salesman::getFromFile(string fileName)
 	for (int i = 0; i < len; i++) {
 		result[i] = cList[i];
 	}
-	cout << len;
 	return result;
 }
 int main() {
