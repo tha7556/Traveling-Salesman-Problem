@@ -79,6 +79,9 @@ public class ExhaustedSalesman extends Salesman{
 			worstFitness = fitness;
 			worstRoute = route;
 		}
+		if(computations % 10000000 == 0)
+			System.out.println(Math.round((double)computations/(double)factorial(route.size())*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
+			
 		computations++;
 	}
 	/**
