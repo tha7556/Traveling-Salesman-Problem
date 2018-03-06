@@ -8,13 +8,13 @@
 class Salesman {
 public:
 	//The main Constructor which creates a new solver based on an array of Cities
-	Salesman(City* city);
+	Salesman(vector<City> city);
 	//The default Constructor
 	Salesman();
 	//Deconstructor
 	~Salesman();
 protected:
-	City* cities;
+	vector<City> cities;
 	int length;
 	Route bestRoute;
 	Route worstRoute;
@@ -22,9 +22,9 @@ protected:
 	double worstFitness;
 public:
 	//Gets the array of Cities
-	City* getCities();
+	vector<City> getCities();
 	//Grabs an array of Cities from the given file with lines in the form:
 	//x<tab>y<tab>name
-	static City* getFromFile(string fileName);
+	static vector<City> getFromFile(string fileName);
 };
 

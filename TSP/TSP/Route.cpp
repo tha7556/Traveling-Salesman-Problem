@@ -1,13 +1,10 @@
 #include "Route.h"
 #include <math.h>
 
-Route::Route(City *city) {
+Route::Route(vector<City> city) {
 	distance = 0.0;
-	length = sizeof(city) / sizeof(city[0]);
-	cities = new City[length];
-	for (int i = 0; i < length; i++) {
-		cities[i] = city[i];
-	}
+	length = city.size();
+	cities = city;
 	getDistance();
 }
 
@@ -34,7 +31,7 @@ double Route::getDistance() {
 }
 
 
-City* Route::getCities() {
+vector<City> Route::getCities() {
 	return cities;
 }
 
@@ -49,17 +46,16 @@ double Route::getFitness() {
 }
 
 
-void Route::set(int index, City value) {
-	cities[index] = value;
+void Route::set(int index, City *value) {
+	cities[index] = *value;
 }
 
 
 Route Route::swap(int indexA, int indexB) {
-	cout << indexA << indexB << endl;
-	Route newRoute = Route(cities);
-	newRoute.set(indexA, cities[indexB]);
-	newRoute.set(indexB, cities[indexA]);
-	return newRoute;
+	Route result = Route(cities);
+	result.set(indexA, &cities[indexB]);
+	result.set(indexB, &cities[indexA]);
+	return result;
 }
 
 

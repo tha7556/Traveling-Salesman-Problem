@@ -11,9 +11,9 @@ Salesman::~Salesman() {
 }
 
 
-Salesman::Salesman(City* city) {
-	length = sizeof(*city) / sizeof(city[0]);
-	cities = new City[length];
+Salesman::Salesman(vector<City> city) {
+	length = city.size();
+	cities = city;
 	for (int i = 0; i < length; i++) {
 		cities[i] = city[i];
 	}
@@ -24,12 +24,12 @@ Salesman::Salesman(City* city) {
 }
 
 
-City* Salesman::getCities() {
+vector<City> Salesman::getCities() {
 	return cities;
 }
 
 
-City* Salesman::getFromFile(string fileName) {
+vector<City> Salesman::getFromFile(string fileName) {
 	ifstream file;
 	file.open(fileName);
 	if (!file) {
@@ -45,17 +45,12 @@ City* Salesman::getFromFile(string fileName) {
 		double y = atof(line.substr(0, line.find("\t") + 1).c_str());
 		line = line.substr(line.find("\t") + 1);
 		string name = line;
-		cout << name << endl;
 		City city = City(name, x, y);
 		cList.push_back(city);
 		len++;
 	}
 	file.close();
-	City *result = new City[len];
-	for (int i = 0; i < len; i++) {
-		result[i] = cList[i];
-	}
-	return result;
+	return cList;
 }
 
 
