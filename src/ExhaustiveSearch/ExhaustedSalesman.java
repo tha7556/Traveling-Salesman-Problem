@@ -12,11 +12,8 @@ import utility.Salesman;
  * @author Tyler Atkinson
  */
 public class ExhaustedSalesman extends Salesman{
-	public long computations = 0;
 	private NumberFormat format;
 	private long target;
-	private double mean;
-	private long startTime, endTime;
 	/**
 	 * Creates a new Salesman out of an Array of Cities
 	 * @param cities The Array of Cities
@@ -65,30 +62,11 @@ public class ExhaustedSalesman extends Salesman{
 			next(current+1,route);
 		
 	}
-	/**
-	 * Evaluates each Route and modifies the bestFitness and BestRoute variables 
-	 * @param route The current Route
-	 */
-	private void compareRoute(Route route) {
-		//System.out.println(route);
-		double fitness = route.getFitness();
-		mean += route.getDistance();
-		if(fitness > bestFitness) {
-			//System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds    "+route);
-			bestFitness = fitness;
-			bestRoute = route;
-			if(show)
-				updateRoute(bestRoute);
-		}
-		if(fitness < worstFitness) {
-			worstFitness = fitness;
-			worstRoute = route;
-		}
-		if(computations % 1000000 == 0) {
+	public void compareRoute(Route route) {
+		super.compareRoute(route);
+		if(computations % 1 == 0) {
 			System.out.println(Math.round((double) computations / (double) target * 1000000.0) / 10000.0 + "%   " + (System.nanoTime() - startTime) / 1000000000.0 + " seconds    " + route + "\t" + route.getDistance());
 		}
-		writeToFile(route+","+route.getDistance());
-		computations++;
 	}
 	/**
 	 * Method for calculating factorials

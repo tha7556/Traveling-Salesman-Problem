@@ -19,6 +19,8 @@ public abstract class Salesman {
 	protected boolean show, fileOpen;
 	protected FileWriter fWriter;
 	protected PrintWriter pWriter;
+	protected long startTime, endTime,computations;
+	protected double mean;
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize if show = true
 	 * @param cities The Array of Cities
@@ -64,6 +66,27 @@ public abstract class Salesman {
 		if(show) {
 			window.updateRoute(route.getCities());
 		}
+	}
+	/**
+	 * Evaluates each Route and modifies the bestFitness and BestRoute variables
+	 * @param route The current Route
+	 */
+	public void compareRoute(Route route) {
+		double fitness = route.getFitness();
+		mean += route.getDistance();
+		if(fitness > bestFitness) {
+			//System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds    "+route);
+			bestFitness = fitness;
+			bestRoute = route;
+			if(show)
+				updateRoute(bestRoute);
+		}
+		if(fitness < worstFitness) {
+			worstFitness = fitness;
+			worstRoute = route;
+		}
+		writeToFile(route+","+route.getDistance());
+		computations++;
 	}
 	/**
 	 * Randomly shuffles an Array of cities
