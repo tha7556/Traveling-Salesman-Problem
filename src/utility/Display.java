@@ -32,7 +32,7 @@ public class Display extends JPanel {
     	
     	ArrayList<Line2D> newLines = new ArrayList<Line2D>(lines.size());
     	for(int i = 0; i < path.length; i++) {
-    		double x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+    		double x1, x2, y1, y2;
     		x1 = path[i].getX();
 			y1 = path[i].getY();
     		if(i+1 < path.length) {

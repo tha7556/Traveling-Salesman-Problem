@@ -73,11 +73,11 @@ public class Route {
 	 * Returns the Route as a String in the form:<br>A-B-C-D-A</br>
 	 */
 	public String toString() {
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		for(City city : cities) {
-			result += city.getName() + "-";
+			result.append(city.getName()).append("-");
 		}
-		result += cities[0].getName();
-		return result.trim();
+		result.append(cities[0].getName());
+		return result.toString().trim();
 	}
 }

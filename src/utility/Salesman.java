@@ -68,8 +68,7 @@ public abstract class Salesman {
 	public static City[] shuffleArray(City[] array) {
 		City[] result = new City[array.length];
 		ArrayList<City> list = new ArrayList<City>(array.length);
-		for(City c : array)
-			list.add(c);
+        Collections.addAll(list, array);
 		Collections.shuffle(list);
 		for(int i = 0; i < list.size(); i++)
 			result[i] = list.get(i);
@@ -77,13 +76,13 @@ public abstract class Salesman {
 	}
 	/**
 	 * Creates a new City Array based on data from a File in the form:
-	 * <br>x,y,name seperated by tabs, with each City seperated by line</br>
+	 * <br>x,y,name separated by tabs, with each City separated by line</br>
 	 * @param fileName The name of the File
 	 * @return The generated City[] based on the data in the File
 	 */
 	public static City[] getFromFile(String fileName) {
 		ArrayList<City> cities = new ArrayList<City>();
-		Scanner scanner = null;
+		Scanner scanner;
 		try {
 			scanner = new Scanner(new File(fileName));
 			while(scanner.hasNextLine()) {

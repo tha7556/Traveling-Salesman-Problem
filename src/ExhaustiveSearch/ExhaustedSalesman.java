@@ -14,6 +14,7 @@ import utility.Salesman;
 public class ExhaustedSalesman extends Salesman{
 	public long computations = 0;
 	private NumberFormat format;
+	long target;
 	private long startTime, endTime;
 	/**
 	 * Creates a new Salesman out of an Array of Cities
@@ -25,6 +26,7 @@ public class ExhaustedSalesman extends Salesman{
 	public ExhaustedSalesman(City[] cities, boolean show) {
 		super(cities,show);
 		format = NumberFormat.getNumberInstance(Locale.US);
+		target = factorial(cities.length-1);
 	}
 	/**
 	 * Begins recursively evaluating every permutation of the array of Cities
@@ -52,9 +54,6 @@ public class ExhaustedSalesman extends Salesman{
 		}
 		for(int i = 1; i < route.size(); i++) {
 			if(current < i) {
-				if(current == 2) {
-					//System.out.println(route+"\t"+route.swap(i, current)+"\t"+i);
-				}
 				next(current+1,route.swap(i, current));
 			}
 		}
@@ -70,7 +69,7 @@ public class ExhaustedSalesman extends Salesman{
 		//System.out.println(route);
 		double fitness = route.getFitness();
 		if(fitness > bestFitness) {
-			System.out.println(Math.round((double)computations/(double)factorial(route.size()-1)*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
+			System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds    "+route);
 			bestFitness = fitness;
 			bestRoute = route;
 			if(show)
@@ -80,8 +79,8 @@ public class ExhaustedSalesman extends Salesman{
 			worstFitness = fitness;
 			worstRoute = route;
 		}
-		if(computations % 100000 == 0)
-			System.out.println(Math.round((double)computations/(double)factorial(route.size()-1)*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
+		if(computations % 1000000 == 0)
+			System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds    "+route);
 			
 		computations++;
 	}
@@ -102,7 +101,7 @@ public class ExhaustedSalesman extends Salesman{
 	public static void main(String[] args) {
 		//Possibly ~17.7 hours?
 		//Possible to go under 7 minutes???
-		ExhaustedSalesman man = new ExhaustedSalesman(Salesman.getFromFile("data\\TSP test.txt"));
+		ExhaustedSalesman man = new ExhaustedSalesman(Salesman.getFromFile("data\\TSP.txt"),false);
 		man.updateRoute(man.bestRoute);
 		System.out.println("start\n");
 		System.out.println("Took: "+man.compute() + " seconds");

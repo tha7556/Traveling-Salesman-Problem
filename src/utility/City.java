@@ -44,7 +44,7 @@ public class City {
 	 * @return The Manhattan Distance to the other city
 	 */
 	public double distanceTo(City city) {
-		return Math.sqrt((double)Math.pow(x-city.getX(), 2.0) + (double)Math.pow(y-city.getY(), 2.0));
+		return Math.sqrt(Math.pow(x-city.getX(), 2.0) + Math.pow(y-city.getY(), 2.0));
 	}
 	/**
 	 * Returns the City as a String in the form:<br>Name: (x,y)</br>
