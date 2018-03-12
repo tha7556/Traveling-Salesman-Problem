@@ -67,6 +67,12 @@ public abstract class Salesman {
 			window.updateRoute(route.getCities());
 		}
 	}
+
+	/**
+	 * Abstract method used to compute the shortest path
+	 * @return The number of seconds taken to calculate the shortest path
+	 */
+	public abstract double compute();
 	/**
 	 * Evaluates each Route and modifies the bestFitness and BestRoute variables
 	 * @param route The current Route
@@ -128,6 +134,11 @@ public abstract class Salesman {
 		return result;
 		
 	}
+
+	/**
+	 * Opens a File and initializes the PrintWriter to write to the File
+	 * @param fileName The File to Write to
+	 */
 	public void openFile(String fileName) {
 	    if(!fileOpen) {
             try {
@@ -140,7 +151,11 @@ public abstract class Salesman {
             }
         }
     }
-    public void closeFile() {
+
+	/**
+	 * Closes the PrintWriter
+	 */
+	public void closeFile() {
 	    if(fileOpen) {
 	        try {
                 pWriter.close();
@@ -152,13 +167,24 @@ public abstract class Salesman {
             }
         }
     }
+
+	/**
+	 * Writes the data to the File at the given fileName
+	 * @param data The data to write to the File with a new line at the end
+	 * @param fileName The name of the File to write to
+	 */
 	public void writeToFile(String data, String fileName) {
         if(!fileOpen) {
             openFile(fileName);
         }
         pWriter.println(data);
     }
-    public void writeToFile(String data) {
+
+	/**
+	 * Writes the data to the previously opened File
+	 * @param data The data to write to the File with a new line at the end
+	 */
+	public void writeToFile(String data) {
 	    if(fileOpen)
 	        writeToFile(data,null);
 	    else

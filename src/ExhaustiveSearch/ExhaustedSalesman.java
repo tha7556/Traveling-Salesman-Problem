@@ -62,9 +62,14 @@ public class ExhaustedSalesman extends Salesman{
 			next(current+1,route);
 		
 	}
+
+	/**
+	 * Overrides the Salesman.compareRoute so that it displays a percentage based on the progress
+	 * @param route The current Route
+	 */
 	public void compareRoute(Route route) {
 		super.compareRoute(route);
-		if(computations % 1 == 0) {
+		if(computations % 1000000 == 0) {
 			System.out.println(Math.round((double) computations / (double) target * 1000000.0) / 10000.0 + "%   " + (System.nanoTime() - startTime) / 1000000000.0 + " seconds    " + route + "\t" + route.getDistance());
 		}
 	}
