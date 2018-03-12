@@ -14,7 +14,8 @@ import utility.Salesman;
 public class ExhaustedSalesman extends Salesman{
 	public long computations = 0;
 	private NumberFormat format;
-	long target;
+	private long target;
+	private double mean;
 	private long startTime, endTime;
 	/**
 	 * Creates a new Salesman out of an Array of Cities
@@ -33,13 +34,16 @@ public class ExhaustedSalesman extends Salesman{
 	 */
 	public double compute() {
 		Route r = new Route(cities);
+		openFile("data\\ExhaustiveResults.csv");
 		computations = 0;
+		mean = 0;
 		startTime = System.nanoTime();
 		next(1,r);
 		endTime = System.nanoTime();
+		closeFile();
 		System.out.println(Math.round((double)computations/(double)factorial(cities.length-1)*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
+		System.out.println("Mean: "+mean/target);
 		return (endTime-startTime)/1000000000.0;
-		
 	}
 	/**
 	 * Private recursive method to evaluate each permutation
@@ -68,8 +72,9 @@ public class ExhaustedSalesman extends Salesman{
 	private void compareRoute(Route route) {
 		//System.out.println(route);
 		double fitness = route.getFitness();
+		mean += route.getDistance();
 		if(fitness > bestFitness) {
-			System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds    "+route);
+			//System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds    "+route);
 			bestFitness = fitness;
 			bestRoute = route;
 			if(show)
@@ -79,9 +84,10 @@ public class ExhaustedSalesman extends Salesman{
 			worstFitness = fitness;
 			worstRoute = route;
 		}
-		if(computations % 1000000 == 0)
-			System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds    "+route);
-			
+		if(computations % 1000000 == 0) {
+			System.out.println(Math.round((double) computations / (double) target * 1000000.0) / 10000.0 + "%   " + (System.nanoTime() - startTime) / 1000000000.0 + " seconds    " + route + "\t" + route.getDistance());
+		}
+		writeToFile(route+","+route.getDistance());
 		computations++;
 	}
 	/**
@@ -99,8 +105,6 @@ public class ExhaustedSalesman extends Salesman{
 		return n * factorial(n-1);
 	}
 	public static void main(String[] args) {
-		//Possibly ~17.7 hours?
-		//Possible to go under 7 minutes???
 		ExhaustedSalesman man = new ExhaustedSalesman(Salesman.getFromFile("data\\TSP.txt"),false);
 		man.updateRoute(man.bestRoute);
 		System.out.println("start\n");
@@ -108,7 +112,9 @@ public class ExhaustedSalesman extends Salesman{
 		System.out.println("\t   "+man.computations + " loops");
 		System.out.println("Should be: " +factorial(man.getCities().length-1) + " loops");
 		man.updateRoute(man.bestRoute);
-		System.out.println(man.bestRoute);
+		System.out.println("Best Route: "+man.bestRoute + " " + man.bestRoute.getDistance());
+		System.out.println("Worst Route: "+man.worstRoute + " " + man.worstRoute.getDistance());
+
 	}
 
 }

@@ -1,6 +1,8 @@
 package utility;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -14,7 +16,9 @@ public abstract class Salesman {
 	protected double bestFitness, worstFitness;
 	public static final int MAX_WIDTH = 1 , MAX_HEIGHT = 1;
 	protected Window window;
-	protected boolean show;
+	protected boolean show, fileOpen;
+	protected FileWriter fWriter;
+	protected PrintWriter pWriter;
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize if show = true
 	 * @param cities The Array of Cities
@@ -29,6 +33,7 @@ public abstract class Salesman {
 		worstRoute = bestRoute;
 		bestFitness = bestRoute.getFitness();
 		worstFitness = bestFitness;
+		fileOpen = false;
 	}
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize
@@ -100,4 +105,40 @@ public abstract class Salesman {
 		return result;
 		
 	}
+	public void openFile(String fileName) {
+	    if(!fileOpen) {
+            try {
+                File file = new File(fileName);
+                fWriter = new FileWriter(file);
+                pWriter = new PrintWriter(fWriter);
+                fileOpen = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void closeFile() {
+	    if(fileOpen) {
+	        try {
+                pWriter.close();
+                fWriter.close();
+                fileOpen = false;
+            }
+            catch(Exception e) {
+	            e.printStackTrace();
+            }
+        }
+    }
+	public void writeToFile(String data, String fileName) {
+        if(!fileOpen) {
+            openFile(fileName);
+        }
+        pWriter.println(data);
+    }
+    public void writeToFile(String data) {
+	    if(fileOpen)
+	        writeToFile(data,null);
+	    else
+	        throw new RuntimeException("Error, File not open. Either call openFile() or specify a file name");
+    }
 }
