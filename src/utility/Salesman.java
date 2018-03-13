@@ -16,9 +16,7 @@ public abstract class Salesman {
 	protected double bestFitness, worstFitness;
 	public static final int MAX_WIDTH = 1 , MAX_HEIGHT = 1;
 	protected Window window;
-	protected boolean show, fileOpen;
-	protected FileWriter fWriter;
-	protected PrintWriter pWriter;
+	protected boolean show;
 	protected long startTime, endTime,computations;
 	protected double mean;
 	/**
@@ -35,7 +33,6 @@ public abstract class Salesman {
 		worstRoute = bestRoute;
 		bestFitness = bestRoute.getFitness();
 		worstFitness = bestFitness;
-		fileOpen = false;
 	}
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize
@@ -81,7 +78,6 @@ public abstract class Salesman {
 		double fitness = route.getFitness();
 		mean += route.getDistance();
 		if(fitness > bestFitness) {
-			//System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds    "+route);
 			bestFitness = fitness;
 			bestRoute = route;
 			if(show)
@@ -91,7 +87,6 @@ public abstract class Salesman {
 			worstFitness = fitness;
 			worstRoute = route;
 		}
-		writeToFile(route+","+route.getDistance());
 		computations++;
 	}
 	/**
@@ -134,60 +129,7 @@ public abstract class Salesman {
 		return result;
 		
 	}
-
-	/**
-	 * Opens a File and initializes the PrintWriter to write to the File
-	 * @param fileName The File to Write to
-	 */
-	public void openFile(String fileName) {
-	    if(!fileOpen) {
-            try {
-                File file = new File(fileName);
-                fWriter = new FileWriter(file);
-                pWriter = new PrintWriter(fWriter);
-                fileOpen = true;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-	/**
-	 * Closes the PrintWriter
-	 */
-	public void closeFile() {
-	    if(fileOpen) {
-	        try {
-                pWriter.close();
-                fWriter.close();
-                fileOpen = false;
-            }
-            catch(Exception e) {
-	            e.printStackTrace();
-            }
-        }
-    }
-
-	/**
-	 * Writes the data to the File at the given fileName
-	 * @param data The data to write to the File with a new line at the end
-	 * @param fileName The name of the File to write to
-	 */
-	public void writeToFile(String data, String fileName) {
-        if(!fileOpen) {
-            openFile(fileName);
-        }
-        pWriter.println(data);
-    }
-
-	/**
-	 * Writes the data to the previously opened File
-	 * @param data The data to write to the File with a new line at the end
-	 */
-	public void writeToFile(String data) {
-	    if(fileOpen)
-	        writeToFile(data,null);
-	    else
-	        throw new RuntimeException("Error, File not open. Either call openFile() or specify a file name");
-    }
+    public static void main(String[] args) {
+		System.out.println(new Route(getFromFile("data\\TSP.txt")).getDistance());
+	}
 }

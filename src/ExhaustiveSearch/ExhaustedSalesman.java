@@ -31,13 +31,11 @@ public class ExhaustedSalesman extends Salesman{
 	 */
 	public double compute() {
 		Route r = new Route(cities);
-		openFile("data\\ExhaustiveResults.csv");
 		computations = 0;
 		mean = 0;
 		startTime = System.nanoTime();
 		next(1,r);
 		endTime = System.nanoTime();
-		closeFile();
 		System.out.println(Math.round((double)computations/(double)factorial(cities.length-1)*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
 		System.out.println("Mean: "+mean/target);
 		return (endTime-startTime)/1000000000.0;
@@ -90,7 +88,6 @@ public class ExhaustedSalesman extends Salesman{
 	public static void main(String[] args) {
 		ExhaustedSalesman man = new ExhaustedSalesman(Salesman.getFromFile("data\\TSP.txt"),false);
 		man.updateRoute(man.bestRoute);
-		System.out.println("start\n");
 		System.out.println("Took: "+man.compute() + " seconds");
 		System.out.println("\t   "+man.computations + " loops");
 		System.out.println("Should be: " +factorial(man.getCities().length-1) + " loops");
