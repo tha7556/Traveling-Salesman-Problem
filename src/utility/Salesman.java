@@ -130,6 +130,10 @@ public abstract class Salesman {
 		
 	}
     public static void main(String[] args) {
-		System.out.println(new Route(getFromFile("data\\TSP.txt")).getDistance());
+		String fileName = "data\\TSP.txt";
+		if(args.length == 1) {
+			fileName = args[0].trim();
+		}
+		System.out.println(new Route(getFromFile(fileName)).getDistance());
 	}
 }

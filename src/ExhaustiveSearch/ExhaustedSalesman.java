@@ -86,7 +86,11 @@ public class ExhaustedSalesman extends Salesman{
 		return n * factorial(n-1);
 	}
 	public static void main(String[] args) {
-		ExhaustedSalesman man = new ExhaustedSalesman(Salesman.getFromFile("data\\TSP.txt"),false);
+		String fileName = "data\\TSP.txt";
+		if(args.length == 1) {
+			fileName = args[0].trim();
+		}
+		ExhaustedSalesman man = new ExhaustedSalesman(Salesman.getFromFile(fileName),false);
 		man.updateRoute(man.bestRoute);
 		System.out.println("Took: "+man.compute() + " seconds");
 		System.out.println("\t   "+man.computations + " loops");
