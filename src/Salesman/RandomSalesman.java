@@ -41,10 +41,9 @@ public class RandomSalesman extends Salesman{
         mean = 0;
         startTime = System.nanoTime();
 
-        for(computations = 0; computations < target; computations++) {
+        for(computations = 0; computations < target;) {
             current = shuffleRoute(current);
             compareRoute(current);
-            System.out.println(current + " " + current.getDistance());
         }
 
         endTime = System.nanoTime();
@@ -53,6 +52,16 @@ public class RandomSalesman extends Salesman{
         System.out.println("STD Deviation: " + stdDeviation);
         System.out.println("Mean: "+mean/target);
         return (endTime-startTime)/1000000000.0;
+    }
+    /**
+     * Overrides the Salesman.compareRoute so that it displays a percentage based on the progress
+     * @param route The current Route
+     */
+    public void compareRoute(Route route) {
+        super.compareRoute(route);
+        if(computations % 100 == 0) {
+            System.out.println(Math.round((double) computations / (double) target * 1000000.0) / 10000.0 + "%   " + (System.nanoTime() - startTime) / 1000000000.0 + " seconds    " + route + "\t" + route.getDistance());
+        }
     }
     /**
      * Returns the current Target
