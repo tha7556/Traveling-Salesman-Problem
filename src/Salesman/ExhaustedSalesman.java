@@ -21,6 +21,12 @@ public class ExhaustedSalesman extends Salesman{
 	public ExhaustedSalesman(City[] cities) {
 		this(cities,true);
 	}
+
+	/**
+	 * Creates a new Salesman out of an Array of Cities
+	 * @param cities The Array of Cities
+	 * @param show True if the data should be displayed, false otherwise
+	 */
 	public ExhaustedSalesman(City[] cities, boolean show) {
 		super(cities,show);
 		format = NumberFormat.getNumberInstance(Locale.US);
