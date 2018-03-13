@@ -20,7 +20,7 @@ public abstract class Salesman {
 	protected Window window;
 	protected boolean show;
 	protected long startTime, endTime,computations;
-	protected double mean;
+	protected double mean, sum, sqrSum;
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize if show = true
 	 * @param cities The Array of Cities
@@ -79,6 +79,8 @@ public abstract class Salesman {
 	public void compareRoute(Route route) {
 		double fitness = route.getFitness();
 		mean += route.getDistance();
+		sum += route.getDistance();
+		sqrSum += Math.pow(route.getDistance(),2.0);
 		if(fitness > bestFitness) {
 			bestFitness = fitness;
 			bestRoute = route;

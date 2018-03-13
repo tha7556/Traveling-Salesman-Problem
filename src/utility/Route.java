@@ -53,7 +53,7 @@ public class Route {
 	 * @return The Route's fitness
 	 */
 	public double getFitness() {
-		return 1.0/distance;
+		return 1.0/getDistance();
 	}
 	/**
 	 * Swaps two Cities at given indices
@@ -62,11 +62,8 @@ public class Route {
 	 */
 	public Route swap(int indexA, int indexB) {
 		Route newRoute = new Route(Arrays.copyOf(cities, cities.length));
-		//System.out.println("swap: "+"\n"+cities[indexB]+"\nand:\n"+cities[indexA]);
-		//System.out.println("before: "+newRoute);
 		newRoute.getCities()[indexA] = cities[indexB];
 		newRoute.getCities()[indexB] = cities[indexA];
-		//System.out.println("after: "+newRoute);
 		return newRoute;
 	}
 	/**

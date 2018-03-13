@@ -11,7 +11,7 @@ import utility.Route;
  * Solution to the TSP which uses a recursive Exhaustive Search
  * @author Tyler Atkinson
  */
-public class ExhaustedSalesman extends Salesman{
+public class ExhaustedSalesman extends Salesman {
 	private NumberFormat format;
 	private long target;
 	/**
@@ -39,11 +39,16 @@ public class ExhaustedSalesman extends Salesman{
 		Route r = new Route(cities);
 		computations = 0;
 		mean = 0;
+		sum = 0;
+		sqrSum = 0;
 		startTime = System.nanoTime();
 		next(1,r);
 		endTime = System.nanoTime();
 		System.out.println(Math.round((double)computations/(double)factorial(cities.length-1)*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
 		System.out.println("Mean: "+mean/target);
+		System.out.println("sqrSum: "+sqrSum+"  sum: "+sum+"  computations: "+computations);
+		double stdDeviation = Math.sqrt((sqrSum-(Math.pow(sum,2.0)/(double)computations))/(double)computations);
+		System.out.println("STD Deviation: " + stdDeviation);
 		return (endTime-startTime)/1000000000.0;
 	}
 	/**
@@ -64,7 +69,6 @@ public class ExhaustedSalesman extends Salesman{
 		}
 		if(current < route.size()-2)
 			next(current+1,route);
-		
 	}
 
 	/**
