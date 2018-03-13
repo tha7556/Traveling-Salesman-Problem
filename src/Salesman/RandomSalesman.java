@@ -1,6 +1,9 @@
 package Salesman;
 
 import utility.City;
+import utility.Route;
+
+
 /**
  * Solution to the TSP which uses a Random search
  * @author Tyler Atkinson
@@ -35,7 +38,20 @@ public class RandomSalesman extends Salesman{
     }
     @Override
     public double compute() {
-        return 0;
+        Route current = new Route(cities);
+        mean = 0;
+        startTime = System.nanoTime();
+
+        for(computations = 0; computations < target; computations++) {
+            current = shuffleRoute(current);
+            compareRoute(current);
+            System.out.println(current + " " + current.getDistance());
+        }
+
+        endTime = System.nanoTime();
+        System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
+        System.out.println("Mean: "+mean/target);
+        return (endTime-startTime)/1000000000.0;
     }
 
     /**
@@ -44,5 +60,17 @@ public class RandomSalesman extends Salesman{
      */
     public long getTarget() {
         return target;
+    }
+    public static void main(String[] args) {
+        String fileName = "data\\TSP.txt";
+        if(args.length == 1) {
+            fileName = args[0].trim();
+        }
+        RandomSalesman man = new RandomSalesman(Salesman.getFromFile(fileName),false);
+        man.updateRoute(man.bestRoute);
+        System.out.println("Took: "+man.compute() + " seconds");
+        man.updateRoute(man.bestRoute);
+        System.out.println("Best Route: "+man.bestRoute + " " + man.bestRoute.getDistance());
+        System.out.println("Worst Route: "+man.worstRoute + " " + man.worstRoute.getDistance());
     }
 }

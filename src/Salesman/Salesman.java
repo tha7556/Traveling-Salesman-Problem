@@ -106,6 +106,14 @@ public abstract class Salesman {
 		return result;
 	}
 	/**
+	 * Randomly shuffles a Route
+	 * @param r The Route to shuffle
+	 * @return A shuffled version of the original route.
+	 */
+	public static Route shuffleRoute(Route r) {
+		return new Route(shuffleArray(r.getCities()));
+	}
+	/**
 	 * Creates a new City Array based on data from a File in the form:
 	 * <br>x,y,name separated by tabs, with each City separated by line</br>
 	 * @param fileName The name of the File
