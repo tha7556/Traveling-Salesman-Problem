@@ -1,4 +1,4 @@
-package ExhaustiveSearch;
+package Salesman;
 
 
 import java.text.NumberFormat;
@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import utility.City;
 import utility.Route;
-import utility.Salesman;
+
 /**
  * Solution to the TSP which uses a recursive Exhaustive Search
  * @author Tyler Atkinson

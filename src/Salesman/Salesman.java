@@ -1,8 +1,10 @@
-package utility;
+package Salesman;
+
+import utility.City;
+import utility.Route;
+import utility.Window;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
