@@ -5,6 +5,8 @@ import utility.Route;
 import utility.Window;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -21,6 +23,7 @@ public abstract class Salesman {
 	protected boolean show;
 	protected long startTime, endTime,computations;
 	protected double mean, sum, sqrSum;
+	protected double[][] bins;
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize if show = true
 	 * @param cities The Array of Cities
@@ -91,7 +94,45 @@ public abstract class Salesman {
 			worstFitness = fitness;
 			worstRoute = route;
 		}
+		if(bins != null) {
+			putIntoBin(route);
+		}
 		computations++;
+	}
+	public void createBins(double low, double high, int num) {
+		bins = new double[2][num];
+		bins[0][0] = low;
+		double diff = (high-low)/(double)(num-1);
+		for(int i = 0; i < num; i++) {
+			if(i > 0)
+				bins[0][i] = bins[0][i-1]+diff;
+			bins[1][i] = 0.0;
+		}
+	}
+	public void writeBinsToFile(String fileName) {
+		try {
+			FileWriter fWriter = new FileWriter(new File(fileName));
+			PrintWriter pWriter = new PrintWriter(new File(fileName));
+
+			for (int i = 0; i < bins[0].length; i++) {
+				pWriter.println(bins[0][i] + "," + bins[1][i]);
+			}
+
+			pWriter.close();
+			fWriter.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void putIntoBin(Route r) {
+		double dist = r.getDistance();
+		for(int i = 0; i < bins[0].length; i++) {
+			if(dist < bins[0][i]) {
+				bins[1][i]++;
+				return;
+			}
+		}
 	}
 	/**
 	 * Randomly shuffles an Array of cities
@@ -141,11 +182,5 @@ public abstract class Salesman {
 		return result;
 		
 	}
-    public static void main(String[] args) {
-		String fileName = "data\\TSP.txt";
-		if(args.length == 1) {
-			fileName = args[0].trim();
-		}
-		System.out.println(new Route(getFromFile(fileName)).getDistance());
-	}
+
 }

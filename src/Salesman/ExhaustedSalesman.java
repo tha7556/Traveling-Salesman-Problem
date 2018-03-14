@@ -36,6 +36,7 @@ public class ExhaustedSalesman extends Salesman {
 	 * Begins recursively evaluating every permutation of the array of Cities
 	 */
 	public double compute() {
+		createBins(3.68940712234167,11.5038271479076,100); //low and high found from previous runs
 		Route r = new Route(cities);
 		computations = 0;
 		mean = 0;
@@ -46,9 +47,9 @@ public class ExhaustedSalesman extends Salesman {
 		endTime = System.nanoTime();
 		System.out.println(Math.round((double)computations/(double)factorial(cities.length-1)*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
 		System.out.println("Mean: "+mean/target);
-		System.out.println("sqrSum: "+sqrSum+"  sum: "+sum+"  computations: "+computations);
 		double stdDeviation = Math.sqrt((sqrSum-(Math.pow(sum,2.0)/(double)computations))/(double)computations);
 		System.out.println("STD Deviation: " + stdDeviation);
+		writeBinsToFile("data\\ExhaustiveHistogram.csv");
 		return (endTime-startTime)/1000000000.0;
 	}
 	/**

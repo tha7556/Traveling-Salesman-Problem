@@ -38,6 +38,7 @@ public class RandomSalesman extends Salesman{
     @Override
     public double compute() {
         Route current = new Route(cities);
+        createBins(3.68940712234167,11.5038271479076,100); //low and high found from previous runs
         mean = 0;
         startTime = System.nanoTime();
 
@@ -49,6 +50,7 @@ public class RandomSalesman extends Salesman{
         endTime = System.nanoTime();
         System.out.println(Math.round((double)computations/(double)target*1000000.0)/10000.0+ "%   "+(System.nanoTime()-startTime)/1000000000.0 + " seconds");
         double stdDeviation = Math.sqrt((sqrSum-(Math.pow(sum,2.0)/(double)computations))/(double)computations);
+        writeBinsToFile("data\\Histogram.csv");
         System.out.println("STD Deviation: " + stdDeviation);
         System.out.println("Mean: "+mean/target);
         return (endTime-startTime)/1000000000.0;
