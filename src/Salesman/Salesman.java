@@ -113,7 +113,7 @@ public abstract class Salesman {
 		try {
 			FileWriter fWriter = new FileWriter(new File(fileName));
 			PrintWriter pWriter = new PrintWriter(new File(fileName));
-
+			pWriter.println("Bin,Frequency");
 			for (int i = 0; i < bins[0].length; i++) {
 				pWriter.println(bins[0][i] + "," + bins[1][i]);
 			}
@@ -141,7 +141,6 @@ public abstract class Salesman {
 	public static City[] shuffleArray(City[] array, boolean dontShuffleStart) {
 		City[] result = new City[array.length];
 		ArrayList<City> list = new ArrayList<City>(array.length);
-		int i = 0;
 		if(!dontShuffleStart) {
 			Collections.addAll(list, array);
 			Collections.shuffle(list);
@@ -149,11 +148,10 @@ public abstract class Salesman {
 		else {
 			Collections.addAll(list, Arrays.copyOfRange(array,1,array.length));
 			Collections.shuffle(list);
-			result[0] = array[0];
-			i++;
+			list.add(0,array[0]);
 		}
-		for(; i < array.length; i++) {
-			result[i] = list.get(i-1);
+		for(int i = 0; i < array.length; i++) {
+			result[i] = list.get(i);
 		}
 		return result;
 	}
