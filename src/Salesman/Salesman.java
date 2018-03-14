@@ -88,8 +88,7 @@ public abstract class Salesman {
 		if(fitness > bestFitness) {
 			bestFitness = fitness;
 			bestRoute = route;
-			if(show)
-				updateRoute(bestRoute);
+			updateRoute(bestRoute);
 		}
 		if(fitness < worstFitness) {
 			worstFitness = fitness;

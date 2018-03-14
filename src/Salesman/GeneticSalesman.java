@@ -12,20 +12,19 @@ import java.util.Random;
 public class GeneticSalesman extends Salesman {
     private final int POPULATION_SIZE = 200;
     private final double MUTATION_RATE = 0.01;
-    private double target;
-    private int generations,lastChanged;
+    private int generations,lastChanged, delta;
     private Random rand;
     private Route[] routes;
     /**
      * Creates a new Salesman out of an Array of Cities
      * @param cities The Array of Cities
      * @param show True if the data should be displayed, False otherwise
-     * @param target The target fitness for the Genetic Algorithm
+     * @param delta The number of generations in between changes in besRoute to determine convergence
      */
-    public GeneticSalesman(City[] cities, boolean show,double target) {
+    public GeneticSalesman(City[] cities, boolean show, int delta) {
         super(cities,show);
         generateInitialRoutes();
-        this.target = target;
+        this.delta = delta;
         rand = new Random();
     }
     /**
@@ -33,16 +32,16 @@ public class GeneticSalesman extends Salesman {
      * @param cities The Array of Cities
      * @param show True if the data should be displayed, False otherwise
      */
-    public GeneticSalesman(City[] cities,boolean show) {
-        this(cities,show,.27);
+    public GeneticSalesman(City[] cities, boolean show) {
+        this(cities,show,5000);
     }
     /**
      * Creates a new Salesman out of an Array of Cities
      * @param cities The Array of Cities
-     * @param target The target fitness for the Genetic Algorithm
+     * @param delta The number of generations in between changes in besRoute to determine convergence
      */
-    public GeneticSalesman(City[] cities,double target) {
-        this(cities,true,target);
+    public GeneticSalesman(City[] cities, int delta) {
+        this(cities,true,delta);
     }
     /**
      * Creates a new Salesman out of an Array of Cities
@@ -73,7 +72,7 @@ public class GeneticSalesman extends Salesman {
         sqrSum = 0;
         generations = 0;
         startTime = System.nanoTime();
-        while(bestFitness < target) {
+        while(generations-lastChanged < delta) {
             evolve();
         }
         endTime = System.nanoTime();
