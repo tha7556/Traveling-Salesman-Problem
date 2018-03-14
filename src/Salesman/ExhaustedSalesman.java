@@ -34,6 +34,7 @@ public class ExhaustedSalesman extends Salesman {
 	}
 	/**
 	 * Begins recursively evaluating every permutation of the array of Cities
+	 * @return The number of seconds taken to calculate the shortest Route
 	 */
 	public double compute() {
 		createBins(3.689407122341673,11.503827147907607,100); //low and high found from previous runs

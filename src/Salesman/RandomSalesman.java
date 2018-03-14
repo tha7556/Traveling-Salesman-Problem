@@ -35,7 +35,10 @@ public class RandomSalesman extends Salesman{
     public RandomSalesman(City[] cities) {
         this(cities,true);
     }
-    @Override
+    /**
+     * Begins evaluating random permutations to find the shortest Route
+     * @return The number of seconds taken to calculate the shortest Route
+     */
     public double compute() {
         Route current = new Route(cities);
         createBins(3.68940712234167,11.5038271479076,100); //low and high found from previous runs
