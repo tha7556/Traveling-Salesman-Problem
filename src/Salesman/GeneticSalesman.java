@@ -10,6 +10,7 @@ public class GeneticSalesman extends Salesman {
     private final int POPULATION_SIZE = 200;
     private final double MUTATION_RATE = 0.01;
     private double target;
+    private int generations,lastChanged;
     private Random rand;
     private Route[] routes;
     public GeneticSalesman(City[] cities, boolean show,double target) {
@@ -30,7 +31,7 @@ public class GeneticSalesman extends Salesman {
     private void generateInitialRoutes() {
         routes = new Route[POPULATION_SIZE];
         for(int i = 0; i < POPULATION_SIZE; i++) {
-            Route r = new Route(shuffleArray(cities,true));
+            Route r = new Route(shuffleArray(cities,false));
             routes[i] = r;
         }
     }
@@ -39,23 +40,37 @@ public class GeneticSalesman extends Salesman {
         mean = 0;
         sum = 0;
         sqrSum = 0;
+        generations = 0;
         startTime = System.nanoTime();
-        while(getBestRoute().getFitness() < target) {
+        while(bestFitness < target) {
             evolve();
         }
         endTime = System.nanoTime();
-        System.out.println("STD Deviation: " + null);
+        double stdDeviation = Math.sqrt((sqrSum-(Math.pow(sum,2.0)/(double)computations))/(double)computations);
+        System.out.println("STD Deviation: " + stdDeviation);
+        System.out.println("Computations: "+computations);
+        System.out.println("Generations: "+generations);
         return (endTime-startTime)/1000000000.0;
     }
+    private void analyzeRoutes() {
+        for(Route route : routes)
+            compareRoute(route);
+    }
+    public void updateRoute(Route route) {
+        super.updateRoute(route);
+        lastChanged = generations;
+    }
     private void evolve() {
+        generations++;
         Route[] newRoutes = new Route[routes.length];
-        newRoutes[0] = getBestRoute();
+        newRoutes[0] = bestRoute;
         for(int i = 1; i < routes.length; i++) {
             Route[] parents = selectParents();
             Route child = createChild(parents[0],parents[1]);
             newRoutes[i] = mutate(child);
         }
         routes = newRoutes;
+        analyzeRoutes();
     }
     private Route[] selectParents() {
         Route father;
@@ -167,11 +182,11 @@ public class GeneticSalesman extends Salesman {
         if(args.length == 1) {
             fileName = args[0].trim();
         }
-        GeneticSalesman man = new GeneticSalesman(Salesman.getFromFile(fileName),false);
+        GeneticSalesman man = new GeneticSalesman(Salesman.getFromFile(fileName), false);
         man.updateRoute(man.bestRoute);
-        System.out.println("Took: "+man.compute() + " seconds");
+        System.out.println("Took: " + man.compute() + " seconds");
         man.updateRoute(man.bestRoute);
-        System.out.println("Best Route: "+man.bestRoute + " " + man.bestRoute.getDistance());
-        System.out.println("Worst Route: "+man.worstRoute + " " + man.worstRoute.getDistance());
+        System.out.println("Best Route: " + man.bestRoute + " " + man.bestRoute.getDistance());
+        System.out.println("Worst Route: " + man.worstRoute + " " + man.worstRoute.getDistance());
     }
 }
