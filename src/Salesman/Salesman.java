@@ -154,7 +154,7 @@ public abstract class Salesman {
 			i++;
 		}
 		for(; i < array.length; i++) {
-			result[i] = list.get(i);
+			result[i] = list.get(i-1);
 		}
 		return result;
 	}
