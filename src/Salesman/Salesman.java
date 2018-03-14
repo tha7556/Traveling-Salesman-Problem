@@ -128,7 +128,7 @@ public abstract class Salesman {
 	public void putIntoBin(Route r) {
 		double dist = r.getDistance();
 		for(int i = 0; i < bins[0].length; i++) {
-			if(dist < bins[0][i]) {
+			if(dist <= bins[0][i]) {
 				bins[1][i]++;
 				return;
 			}
