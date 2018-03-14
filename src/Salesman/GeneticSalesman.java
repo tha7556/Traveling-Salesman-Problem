@@ -27,7 +27,7 @@ public class GeneticSalesman extends Salesman {
     public GeneticSalesman(City[] cities) {
         this(cities,true);
     }
-    public void generateInitialRoutes() {
+    private void generateInitialRoutes() {
         routes = new Route[POPULATION_SIZE];
         for(int i = 0; i < POPULATION_SIZE; i++) {
             Route r = new Route(shuffleArray(cities,true));
@@ -47,7 +47,7 @@ public class GeneticSalesman extends Salesman {
         System.out.println("STD Deviation: " + null);
         return (endTime-startTime)/1000000000.0;
     }
-    public Route[] evolve() {
+    private void evolve() {
         Route[] newRoutes = new Route[routes.length];
         newRoutes[0] = getBestRoute();
         for(int i = 1; i < routes.length; i++) {
@@ -56,9 +56,8 @@ public class GeneticSalesman extends Salesman {
             newRoutes[i] = mutate(child);
         }
         routes = newRoutes;
-        return routes;
     }
-    public Route[] selectParents() {
+    private Route[] selectParents() {
         Route father;
         Route mother;
         double total = 0.0;
@@ -95,7 +94,7 @@ public class GeneticSalesman extends Salesman {
         mother = routes[i];
         return new Route[] {father, mother};
     }
-    public Route createChild(Route father, Route mother) {
+    private Route createChild(Route father, Route mother) {
         City[] arr = new City[cities.length];
         int start = (int)(rand.nextDouble()*cities.length);
         int end = (int)(rand.nextDouble()*cities.length);
@@ -120,7 +119,7 @@ public class GeneticSalesman extends Salesman {
         }
         return new Route(arr);
     }
-    public Route mutate(Route route) {
+    private Route mutate(Route route) {
         for(int i = 0; i < route.getCities().length; i++) {
             if(rand.nextDouble() < MUTATION_RATE) {
                 int y = (int)(rand.nextDouble()*route.getCities().length);
