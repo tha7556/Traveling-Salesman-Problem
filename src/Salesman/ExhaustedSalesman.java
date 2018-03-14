@@ -36,7 +36,8 @@ public class ExhaustedSalesman extends Salesman {
 	 * Begins recursively evaluating every permutation of the array of Cities
 	 */
 	public double compute() {
-		createBins(3.68940712234167,11.5038271479076,100); //low and high found from previous runs
+		createBins(3.689407122341673,11.503827147907607,100); //low and high found from previous runs
+		//createBins(3.074099418314308,7.6,100); //for smaller data set
 		Route r = new Route(cities);
 		computations = 0;
 		mean = 0;
