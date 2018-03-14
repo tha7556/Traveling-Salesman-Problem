@@ -30,7 +30,7 @@ public class GeneticSalesman extends Salesman {
     public void generateInitialRoutes() {
         routes = new Route[POPULATION_SIZE];
         for(int i = 0; i < POPULATION_SIZE; i++) {
-            Route r = new Route(shuffleArray(cities));
+            Route r = new Route(shuffleArray(cities,true));
             routes[i] = r;
         }
     }
@@ -162,5 +162,17 @@ public class GeneticSalesman extends Salesman {
             avg += r.getDistance();
         }
         return avg / routes.length;
+    }
+    public static void main(String[] args) {
+        String fileName = "data\\TSP.txt";
+        if(args.length == 1) {
+            fileName = args[0].trim();
+        }
+        GeneticSalesman man = new GeneticSalesman(Salesman.getFromFile(fileName),false);
+        man.updateRoute(man.bestRoute);
+        System.out.println("Took: "+man.compute() + " seconds");
+        man.updateRoute(man.bestRoute);
+        System.out.println("Best Route: "+man.bestRoute + " " + man.bestRoute.getDistance());
+        System.out.println("Worst Route: "+man.worstRoute + " " + man.worstRoute.getDistance());
     }
 }

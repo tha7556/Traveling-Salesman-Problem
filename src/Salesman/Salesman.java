@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 /**
@@ -138,13 +139,23 @@ public abstract class Salesman {
 	 * @param array The Array of Cities to shuffle
 	 * @return A shuffled version of the original array.
 	 */
-	public static City[] shuffleArray(City[] array) {
+	public static City[] shuffleArray(City[] array, boolean dontShuffleStart) {
 		City[] result = new City[array.length];
 		ArrayList<City> list = new ArrayList<City>(array.length);
-        Collections.addAll(list, array);
-		Collections.shuffle(list);
-		for(int i = 0; i < list.size(); i++)
+		int i = 0;
+		if(!dontShuffleStart) {
+			Collections.addAll(list, array);
+			Collections.shuffle(list);
+		}
+		else {
+			Collections.addAll(list, Arrays.copyOfRange(array,1,array.length));
+			Collections.shuffle(list);
+			result[0] = array[0];
+			i++;
+		}
+		for(; i < array.length; i++) {
 			result[i] = list.get(i);
+		}
 		return result;
 	}
 	/**
@@ -153,7 +164,7 @@ public abstract class Salesman {
 	 * @return A shuffled version of the original route.
 	 */
 	public static Route shuffleRoute(Route r) {
-		return new Route(shuffleArray(r.getCities()));
+		return new Route(shuffleArray(r.getCities(),false));
 	}
 	/**
 	 * Creates a new City Array based on data from a File in the form:
