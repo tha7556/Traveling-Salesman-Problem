@@ -66,6 +66,7 @@ public class GeneticSalesman extends Salesman {
      * @return The number of seconds taken to calculate the shortest Route
      */
     public double compute() {
+        createBins(3.689407122341673,11.503827147907607,100);
         computations = 0;
         mean = 0;
         sum = 0;
@@ -80,6 +81,7 @@ public class GeneticSalesman extends Salesman {
         System.out.println("STD Deviation: " + stdDeviation);
         System.out.println("Computations: "+computations);
         System.out.println("Generations: "+generations);
+        writeBinsToFile("data\\GeneticHistogram.csv");
         return (endTime-startTime)/1000000000.0;
     }
 
@@ -98,7 +100,6 @@ public class GeneticSalesman extends Salesman {
         super.updateRoute(route);
         lastChanged = generations;
     }
-
     /**
      * Evolves the current population of Routes into the next generation
      */
