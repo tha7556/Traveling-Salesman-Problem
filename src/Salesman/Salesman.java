@@ -127,12 +127,11 @@ public abstract class Salesman {
 	}
 	public void putIntoBin(Route r) {
 		double dist = r.getDistance();
-		for(int i = 0; i < bins[0].length; i++) {
-			if(dist <= bins[0][i]) {
-				bins[1][i]++;
-				return;
-			}
-		}
+		double max = bins[0][bins[0].length-1];
+		double min = bins[0][0];
+		double dx = (max-min)/bins[0].length;
+		double bin = (dist-min)/dx;
+		bins[1][(int)(bin)]++;
 	}
 	/**
 	 * Randomly shuffles an Array of cities
