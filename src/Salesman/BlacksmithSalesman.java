@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class BlacksmithSalesman extends Salesman {
     private Route currentRoute, prevRoute;
-    private double temperature = 100.0, coolingRate = 0.00001;
+    private double temperature = 1000.0, coolingRate = 0.00001;
     private Random rand;
     public BlacksmithSalesman(City[] cities,boolean show) {
         super(cities,show);
@@ -19,9 +19,9 @@ public class BlacksmithSalesman extends Salesman {
         this(cities,false);
     }
     public double compute() {
+        createBins();
         startTime = System.nanoTime();
         while(temperature > 0.00000001) {
-            //System.out.println(temperature);
             Route newRoute = currentRoute;
             int swapIndex1 = (int)(rand.nextDouble()*(cities.length-1)+1);
             int swapIndex2 = (int)(rand.nextDouble()*(cities.length-1)+1);
@@ -40,6 +40,7 @@ public class BlacksmithSalesman extends Salesman {
             temperature *= 1.0 - coolingRate;
         }
         endTime = System.nanoTime();
+        writeBinsToFile("data\\BlackSmithHistogram.csv");
         System.out.println("Mean: "+mean/computations);
         double stdDeviation = Math.sqrt((sqrSum-(Math.pow(sum,2.0)/(double)computations))/(double)computations);
         System.out.println("STD Deviation: " + stdDeviation);

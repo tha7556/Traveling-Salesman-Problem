@@ -41,7 +41,7 @@ public class RandomSalesman extends Salesman{
      */
     public double compute() {
         Route current = new Route(cities);
-        createBins(3.68940712234167,11.5038271479076,100); //low and high found from previous runs
+        createBins(); //low and high found from previous runs
         mean = 0;
         startTime = System.nanoTime();
 

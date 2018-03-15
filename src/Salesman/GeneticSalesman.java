@@ -66,7 +66,7 @@ public class GeneticSalesman extends Salesman {
      * @return The number of seconds taken to calculate the shortest Route
      */
     public double compute() {
-        createBins(3.689407122341673,11.503827147907607,100);
+        createBins();
         computations = 0;
         mean = 0;
         sum = 0;
@@ -78,6 +78,7 @@ public class GeneticSalesman extends Salesman {
         }
         endTime = System.nanoTime();
         double stdDeviation = Math.sqrt((sqrSum-(Math.pow(sum,2.0)/(double)computations))/(double)computations);
+        System.out.println("Mean: "+mean/computations);
         System.out.println("STD Deviation: " + stdDeviation);
         System.out.println("Computations: "+computations);
         System.out.println("Generations: "+generations);

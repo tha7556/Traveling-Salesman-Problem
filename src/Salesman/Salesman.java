@@ -25,6 +25,7 @@ public abstract class Salesman {
 	protected long startTime, endTime,computations;
 	protected double mean, sum, sqrSum;
 	protected double[][] bins;
+	protected int numBins = 100,minBin = 2,maxBin = 12;
 	/**
 	 * Creates a new Salesman based on an Array of Cities, and also creates a window to visualize if show = true
 	 * @param cities The Array of Cities
@@ -99,11 +100,11 @@ public abstract class Salesman {
 		}
 		computations++;
 	}
-	public void createBins(double low, double high, int num) {
-		bins = new double[2][num];
-		bins[0][0] = low;
-		double diff = (high-low)/(double)(num-1);
-		for(int i = 0; i < num; i++) {
+	public void createBins() {
+		bins = new double[2][numBins];
+		bins[0][0] = minBin;
+		double diff = (maxBin-minBin)/(double)(numBins-1);
+		for(int i = 0; i < numBins; i++) {
 			if(i > 0)
 				bins[0][i] = bins[0][i-1]+diff;
 			bins[1][i] = 0.0;
@@ -151,10 +152,7 @@ public abstract class Salesman {
 			Collections.shuffle(list);
 			list.add(0,array[0]);
 		}
-		for(int i = 0; i < array.length; i++) {
-			result[i] = list.get(i);
-		}
-		return result;
+		return list.toArray(new City[0]);
 	}
 	/**
 	 * Randomly shuffles a Route

@@ -37,7 +37,7 @@ public class ExhaustedSalesman extends Salesman {
 	 * @return The number of seconds taken to calculate the shortest Route
 	 */
 	public double compute() {
-		createBins(3,12,100); //low and high found from previous runs
+		createBins(); //low and high found from previous runs
 		//createBins(3.074099418314308,7.6,100); //for smaller data set
 		Route r = new Route(cities);
 		computations = 0;
@@ -51,7 +51,7 @@ public class ExhaustedSalesman extends Salesman {
 		System.out.println("Mean: "+mean/target);
 		double stdDeviation = Math.sqrt((sqrSum-(Math.pow(sum,2.0)/(double)computations))/(double)computations);
 		System.out.println("STD Deviation: " + stdDeviation);
-		writeBinsToFile("data\\ExhaustiveHistogram.csv");
+		writeBinsToFile("ExhaustiveHistogram.csv");
 		return (endTime-startTime)/1000000000.0;
 	}
 	/**
