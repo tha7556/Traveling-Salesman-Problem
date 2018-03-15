@@ -8,13 +8,14 @@ import java.util.Arrays;
  */
 public class Route {
 	private City[] cities;
-	private double distance = 0.0;
+	private double distance;
 	/**
 	 * Creates a new Route based on an Array of Cities in the order that they are traversed
 	 * @param cities The Array of cities in the order that they are traversed
 	 */
 	public Route(City[] cities) {
 		this.cities = cities;
+		resetDistance();
 		getDistance();
 	}
 	/**
@@ -30,6 +31,8 @@ public class Route {
 	 */
 	public double getDistance() {
 		if(distance == 0.0) {
+			//System.out.println("\tHead "+ cities[0]+", Tail: "+cities[cities.length-1]);
+			//System.out.println("\tHead to tail: "+cities[0].distanceTo(cities[cities.length-1]));
 			for(int i = 0; i < cities.length; i++) {
 				if(i+1 < cities.length) {
 					distance += cities[i].distanceTo(cities[i+1]);
@@ -40,6 +43,9 @@ public class Route {
 			}
 		}
 		return distance;
+	}
+	public void resetDistance() {
+		distance = 0.0;
 	}
 	/**
 	 * Gets the size of the Array of Cities
@@ -64,6 +70,7 @@ public class Route {
 		Route newRoute = new Route(Arrays.copyOf(cities, cities.length));
 		newRoute.getCities()[indexA] = cities[indexB];
 		newRoute.getCities()[indexB] = cities[indexA];
+		newRoute.resetDistance();
 		return newRoute;
 	}
 	/**
