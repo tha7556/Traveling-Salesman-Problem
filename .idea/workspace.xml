@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78ef0dd1-c663-4a5b-97cf-f73ead1b5b37" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Salesman/BlacksmithSalesman.java" afterPath="$PROJECT_DIR$/src/Salesman/BlacksmithSalesman.java" />
-      <change beforePath="$PROJECT_DIR$/src/Salesman/ExhaustedSalesman.java" afterPath="$PROJECT_DIR$/src/Salesman/ExhaustedSalesman.java" />
       <change beforePath="$PROJECT_DIR$/src/Salesman/GeneticSalesman.java" afterPath="$PROJECT_DIR$/src/Salesman/GeneticSalesman.java" />
-      <change beforePath="$PROJECT_DIR$/src/Salesman/RandomSalesman.java" afterPath="$PROJECT_DIR$/src/Salesman/RandomSalesman.java" />
-      <change beforePath="$PROJECT_DIR$/src/Salesman/Salesman.java" afterPath="$PROJECT_DIR$/src/Salesman/Salesman.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ExhaustedSalesman.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ExhaustedSalesman.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Salesman/ExhaustedSalesman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="83" column="111" lean-forward="false" selection-start-line="83" selection-start-column="111" selection-end-line="83" selection-end-column="111" />
+            <state relative-caret-position="661">
+              <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#463#464#0" expanded="true" />
@@ -102,19 +97,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneticSalesman.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GeneticSalesman.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Salesman/GeneticSalesman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1575">
-              <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
+            <state relative-caret-position="882">
+              <caret line="147" column="48" lean-forward="true" selection-start-line="147" selection-start-column="48" selection-end-line="147" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1165#1166#0" expanded="true" />
-                <element signature="e#1203#1204#0" expanded="true" />
-                <element signature="e#1473#1474#0" expanded="true" />
-                <element signature="e#1512#1513#0" expanded="true" />
-                <element signature="e#1669#1670#0" expanded="true" />
+                <element signature="e#1198#1199#0" expanded="true" />
+                <element signature="e#1236#1237#0" expanded="true" />
+                <element signature="e#1506#1507#0" expanded="true" />
+                <element signature="e#1545#1546#0" expanded="true" />
                 <element signature="e#1702#1703#0" expanded="true" />
+                <element signature="e#1735#1736#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -179,8 +174,8 @@
         <option value="$PROJECT_DIR$/src/Salesman/Salesman.java" />
         <option value="$PROJECT_DIR$/src/Salesman/RandomSalesman.java" />
         <option value="$PROJECT_DIR$/src/Salesman/BlacksmithSalesman.java" />
-        <option value="$PROJECT_DIR$/src/Salesman/GeneticSalesman.java" />
         <option value="$PROJECT_DIR$/src/Salesman/ExhaustedSalesman.java" />
+        <option value="$PROJECT_DIR$/src/Salesman/GeneticSalesman.java" />
       </list>
     </option>
   </component>
@@ -267,7 +262,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.BlacksmithSalesman">
+  <component name="RunManager" selected="Application.GeneticSalesman">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -453,8 +448,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.BlacksmithSalesman" />
-        <item index="1" class="java.lang.String" itemvalue="Application.GeneticSalesman" />
+        <item index="0" class="java.lang.String" itemvalue="Application.GeneticSalesman" />
+        <item index="1" class="java.lang.String" itemvalue="Application.BlacksmithSalesman" />
         <item index="2" class="java.lang.String" itemvalue="Application.RandomSalesman" />
         <item index="3" class="java.lang.String" itemvalue="Application.ExhaustedSalesman (1)" />
         <item index="4" class="java.lang.String" itemvalue="Application.Salesman" />
@@ -479,16 +474,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5922652" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40662983" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -505,7 +500,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -861,22 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Salesman/GeneticSalesman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1165#1166#0" expanded="true" />
-            <element signature="e#1203#1204#0" expanded="true" />
-            <element signature="e#1473#1474#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-            <element signature="e#1669#1670#0" expanded="true" />
-            <element signature="e#1702#1703#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Salesman/BlacksmithSalesman.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -891,13 +869,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Salesman/ExhaustedSalesman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="83" column="111" lean-forward="false" selection-start-line="83" selection-start-column="111" selection-end-line="83" selection-end-column="111" />
+        <state relative-caret-position="661">
+          <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#463#464#0" expanded="true" />
             <element signature="e#487#488#0" expanded="true" />
             <element signature="method#factorial#0;class#ExhaustedSalesman#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Salesman/GeneticSalesman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="147" column="48" lean-forward="true" selection-start-line="147" selection-start-column="48" selection-end-line="147" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
+            <element signature="e#1236#1237#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
+            <element signature="e#1545#1546#0" expanded="true" />
+            <element signature="e#1702#1703#0" expanded="true" />
+            <element signature="e#1735#1736#0" expanded="true" />
           </folding>
         </state>
       </provider>
