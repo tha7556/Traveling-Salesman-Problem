@@ -112,6 +112,7 @@ public abstract class Salesman {
 	}
 	public void writeBinsToFile(String fileName) {
 		if(bins != null) {
+			System.out.println("Writing bins to: "+fileName);
 			try {
 				FileWriter fWriter = new FileWriter(new File(fileName));
 				PrintWriter pWriter = new PrintWriter(new File(fileName));
@@ -122,6 +123,7 @@ public abstract class Salesman {
 
 				pWriter.close();
 				fWriter.close();
+				System.out.println("Finished writing bins to file");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
