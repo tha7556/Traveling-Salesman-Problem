@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78ef0dd1-c663-4a5b-97cf-f73ead1b5b37" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Salesman/GeneticSalesman.java" afterPath="$PROJECT_DIR$/src/Salesman/GeneticSalesman.java" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -100,8 +101,8 @@
       <file leaf-file-name="GeneticSalesman.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Salesman/GeneticSalesman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="191" column="43" lean-forward="false" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
+            <state relative-caret-position="336">
+              <caret line="189" column="40" lean-forward="true" selection-start-line="189" selection-start-column="40" selection-end-line="189" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1249#1250#0" expanded="true" />
@@ -883,8 +884,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Salesman/GeneticSalesman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="191" column="43" lean-forward="false" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
+        <state relative-caret-position="336">
+          <caret line="189" column="40" lean-forward="true" selection-start-line="189" selection-start-column="40" selection-end-line="189" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1249#1250#0" expanded="true" />
