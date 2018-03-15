@@ -37,7 +37,7 @@ public class ExhaustedSalesman extends Salesman {
 	 * @return The number of seconds taken to calculate the shortest Route
 	 */
 	public double compute() {
-		createBins(3.689407122341673,11.503827147907607,100); //low and high found from previous runs
+		createBins(3,12,100); //low and high found from previous runs
 		//createBins(3.074099418314308,7.6,100); //for smaller data set
 		Route r = new Route(cities);
 		computations = 0;
