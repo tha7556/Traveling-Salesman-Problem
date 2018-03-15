@@ -171,9 +171,10 @@ public class GeneticSalesman extends Salesman {
         City[] arr = new City[cities.length];
         int start = (int)(rand.nextDouble()*cities.length);
         int end = (int)(rand.nextDouble()*cities.length);
-        while(end <= start) {
-            end = (int)(rand.nextDouble()*cities.length);
-            start = (int)(rand.nextDouble()*cities.length);
+        if(end < start) {
+            int temp = start;
+            start = end;
+            end = temp;
         }
         for(int i = 1; i < cities.length; i++) {
             if(i > start && i < end) {
