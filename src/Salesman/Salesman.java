@@ -112,10 +112,11 @@ public abstract class Salesman {
 	}
 	public void writeBinsToFile(String fileName) {
 		if(bins != null) {
-			System.out.println("Writing bins to: "+fileName);
 			try {
-				FileWriter fWriter = new FileWriter(new File(fileName));
-				PrintWriter pWriter = new PrintWriter(new File(fileName));
+				File f = new File(fileName);
+				System.out.println("Writing bins to: "+f.getAbsolutePath());
+				FileWriter fWriter = new FileWriter(f);
+				PrintWriter pWriter = new PrintWriter(fWriter);
 				pWriter.println("Bin,Frequency");
 				for (int i = 0; i < bins[0].length; i++) {
 					pWriter.println(bins[0][i] + "," + bins[1][i]);
