@@ -110,19 +110,20 @@ public abstract class Salesman {
 		}
 	}
 	public void writeBinsToFile(String fileName) {
-		try {
-			FileWriter fWriter = new FileWriter(new File(fileName));
-			PrintWriter pWriter = new PrintWriter(new File(fileName));
-			pWriter.println("Bin,Frequency");
-			for (int i = 0; i < bins[0].length; i++) {
-				pWriter.println(bins[0][i] + "," + bins[1][i]);
-			}
+		if(bins != null) {
+			try {
+				FileWriter fWriter = new FileWriter(new File(fileName));
+				PrintWriter pWriter = new PrintWriter(new File(fileName));
+				pWriter.println("Bin,Frequency");
+				for (int i = 0; i < bins[0].length; i++) {
+					pWriter.println(bins[0][i] + "," + bins[1][i]);
+				}
 
-			pWriter.close();
-			fWriter.close();
-		}
-		catch(Exception e) {
-			e.printStackTrace();
+				pWriter.close();
+				fWriter.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	public void putIntoBin(Route r) {
