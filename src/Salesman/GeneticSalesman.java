@@ -3,7 +3,9 @@ package Salesman;
 import utility.City;
 import utility.Route;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 /**
  * Solution to the TSP which uses a Genetic Algorithm
@@ -176,16 +178,18 @@ public class GeneticSalesman extends Salesman {
             start = end;
             end = temp;
         }
-        for(int i = 1; i < cities.length; i++) {
+        for(int i = 1; i < end; i++) {
             if(i > start && i < end) {
                 arr[i] = father.getCities()[i];
             }
         }
+        List childList = Arrays.asList(arr);
         for(City c : mother.getCities()) {
-            if(!Arrays.asList(arr).contains(c)) {
+            if(!childList.contains(c)) {
                 for(int i = 0; i < arr.length; i++) {
                     if(arr[i] == null) {
                         arr[i] = c;
+                        childList.set(i,c);
                         break;
                     }
                 }
