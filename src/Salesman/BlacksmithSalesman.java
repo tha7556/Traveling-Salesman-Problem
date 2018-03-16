@@ -6,13 +6,12 @@ import utility.Route;
 import java.util.Random;
 
 public class BlacksmithSalesman extends Salesman {
-    private Route currentRoute, prevRoute;
+    private Route currentRoute;
     private double temperature = 1000.0, coolingRate = 0.00001;
     private Random rand;
     public BlacksmithSalesman(City[] cities,boolean show) {
         super(cities,show);
-        prevRoute = new Route(cities);
-        currentRoute = prevRoute;
+        currentRoute = new Route(cities);
         rand = new Random();
     }
     public BlacksmithSalesman(City[] cities) {
@@ -30,10 +29,7 @@ public class BlacksmithSalesman extends Salesman {
                 swapIndex2 = (int)(rand.nextDouble()*(cities.length-1)+1);
             }
             newRoute = newRoute.swap(swapIndex1,swapIndex2);
-            double currentEnergy = currentRoute.getDistance();
-            double newEnergy = newRoute.getDistance();
-            if(acceptanceProbability(currentEnergy,newEnergy) > rand.nextDouble()) {
-                prevRoute = currentRoute;
+            if(acceptanceProbability(currentRoute.getDistance(),newRoute.getDistance()) > rand.nextDouble()) {
                 currentRoute = newRoute;
                 compareRoute(currentRoute);
             }
@@ -64,5 +60,4 @@ public class BlacksmithSalesman extends Salesman {
         System.out.println("Best Route: "+man.bestRoute + " " + man.bestRoute.getDistance());
         System.out.println("Worst Route: "+man.worstRoute + " " + man.worstRoute.getDistance());
     }
-
 }
